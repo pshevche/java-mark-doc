@@ -24,7 +24,7 @@ class JavaMarkDocDialogEditor(initialComment: String) : DialogWrapper(true) {
         return dialogPanel
     }
 
-    fun getUpdatedComment(): String {
+    fun getUpdatedDocumentationContent(): String {
         return editorField.text
     }
 }

@@ -11,14 +11,29 @@ class JavaMarkDocLineMarkerHandler : GutterIconNavigationHandler<PsiDocComment> 
 
     override fun navigate(event: MouseEvent?, element: PsiDocComment?) {
         if (element != null) {
-            val commentEditor = JavaMarkDocDialogEditor(element.text)
+            val documentationContent = extractDocumentationContent(element.text)
+            val commentEditor = JavaMarkDocDialogEditor(documentationContent)
             if (commentEditor.showAndGet()) {
-                replaceCommentContent(element, commentEditor.getUpdatedComment())
+                val newJavadocComment =
+                    wrapDocumentationContentIntoJavadoc(commentEditor.getUpdatedDocumentationContent())
+                updateJavadocComment(element, newJavadocComment)
             }
         }
     }
 
-    private fun replaceCommentContent(element: PsiDocComment, newCommentContent: String) {
+    private fun extractDocumentationContent(javadocComment: String): String {
+        val lines = javadocComment.split("\n")
+        return lines.subList(1, lines.size - 1).joinToString("\n") { it.replace(" * ", "") }
+    }
+
+    private fun wrapDocumentationContentIntoJavadoc(documentationContent: String): String {
+        val lines = documentationContent.split("\n")
+        val prefix = "/**\n"
+        val suffix = "\n */"
+        return prefix + lines.joinToString("\n") { " * $it" } + suffix
+    }
+
+    private fun updateJavadocComment(element: PsiDocComment, newCommentContent: String) {
         val project = element.project
         val textEditor = FileEditorManager.getInstance(project).selectedEditor as TextEditor
         val document = textEditor.editor.document
