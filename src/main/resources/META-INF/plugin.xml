@@ -6,14 +6,6 @@
     <description>An IntelliJ plugin allowing to edit an individual Javadoc comment using Markdown</description>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
 
-    <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.pshevche.javamarkdoc.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.pshevche.javamarkdoc.services.MyProjectService"/>
-    </extensions>
-
-    <applicationListeners>
-        <listener class="com.github.pshevche.javamarkdoc.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
 </idea-plugin>
