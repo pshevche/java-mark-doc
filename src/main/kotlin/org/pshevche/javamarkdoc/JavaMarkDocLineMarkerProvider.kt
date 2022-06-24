@@ -1,4 +1,4 @@
-package org.pshevche.javamarkdoc.providers
+package org.pshevche.javamarkdoc
 
 import com.intellij.codeInsight.daemon.LineMarkerInfo
 import com.intellij.codeInsight.daemon.LineMarkerProvider
@@ -6,10 +6,10 @@ import com.intellij.icons.AllIcons
 import com.intellij.openapi.editor.markup.GutterIconRenderer
 import com.intellij.psi.PsiElement
 import com.intellij.psi.javadoc.PsiDocComment
-import org.pshevche.javamarkdoc.handlers.JavaMarkDocLineMarkerHandler
 
 /**
- * Adds a gutter icon to Javadoc comments allowing to edit the comment with Markdown
+ * Adds a gutter icon to Javadoc comments triggering a {@link JavaMarkDocLineMarkerHandler}
+ * that allows editing Javadoc comments using Markdown.
  */
 class JavaMarkDocLineMarkerProvider : LineMarkerProvider {
     companion object {

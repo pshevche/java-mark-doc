@@ -11,8 +11,10 @@ import java.awt.Dimension
 import javax.swing.JComponent
 import javax.swing.JPanel
 
-
-class JavaMarkDocDialogEditor(project: Project, initialComment: String) : DialogWrapper(true) {
+/**
+ * A dialog containing a Markdown editor.
+ */
+class MarkdownEditorDialog(project: Project, initialComment: String) : DialogWrapper(true) {
     private val editorField: EditorTextField
 
     companion object {
@@ -38,7 +40,7 @@ class JavaMarkDocDialogEditor(project: Project, initialComment: String) : Dialog
         return dialogPanel
     }
 
-    fun getUpdatedDocumentationContent(): String {
+    fun getUpdatedContent(): String {
         return editorField.text
     }
 }
