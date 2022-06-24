@@ -48,6 +48,11 @@ qodana {
     showReport.set(System.getenv("QODANA_SHOW_REPORT")?.toBoolean() ?: false)
 }
 
+// Auxiliary plugin dependencies
+dependencies {
+    implementation("com.vladsch.flexmark:flexmark-all:0.64.0")
+}
+
 tasks {
     // Set the JVM compatibility versions
     properties("javaVersion").let {

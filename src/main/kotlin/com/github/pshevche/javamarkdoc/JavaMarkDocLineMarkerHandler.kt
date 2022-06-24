@@ -1,5 +1,7 @@
 package com.github.pshevche.javamarkdoc
 
+import com.github.pshevche.javamarkdoc.MarkdownHTMLConverter.Companion.htmlToMarkdown
+import com.github.pshevche.javamarkdoc.MarkdownHTMLConverter.Companion.markdownToHTML
 import com.intellij.codeInsight.daemon.GutterIconNavigationHandler
 import com.intellij.openapi.command.WriteCommandAction
 import com.intellij.openapi.fileEditor.FileEditorManager
@@ -11,11 +13,12 @@ class JavaMarkDocLineMarkerHandler : GutterIconNavigationHandler<PsiDocComment> 
 
     override fun navigate(event: MouseEvent?, element: PsiDocComment?) {
         if (element != null) {
-            val documentationContent = extractDocumentationContent(element.text)
-            val commentEditor = JavaMarkDocDialogEditor(documentationContent)
+            val documentationContentAsHtml = extractDocumentationContent(element.text)
+            val documentationContentAsMarkdown = htmlToMarkdown(documentationContentAsHtml)
+            val commentEditor = JavaMarkDocDialogEditor(element.project, documentationContentAsMarkdown)
             if (commentEditor.showAndGet()) {
-                val newJavadocComment =
-                    wrapDocumentationContentIntoJavadoc(commentEditor.getUpdatedDocumentationContent())
+                val newDocumentationContentAsHtml = markdownToHTML(commentEditor.getUpdatedDocumentationContent())
+                val newJavadocComment = wrapDocumentationContentIntoJavadoc(newDocumentationContentAsHtml)
                 updateJavadocComment(element, newJavadocComment)
             }
         }
