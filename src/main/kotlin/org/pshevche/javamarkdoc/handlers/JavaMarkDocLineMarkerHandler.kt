@@ -1,12 +1,13 @@
-package com.github.pshevche.javamarkdoc
+package org.pshevche.javamarkdoc.handlers
 
-import com.github.pshevche.javamarkdoc.MarkdownHTMLConverter.Companion.htmlToMarkdown
-import com.github.pshevche.javamarkdoc.MarkdownHTMLConverter.Companion.markdownToHTML
+import org.pshevche.javamarkdoc.util.MarkdownHTMLConverter.Companion.htmlToMarkdown
+import org.pshevche.javamarkdoc.util.MarkdownHTMLConverter.Companion.markdownToHTML
 import com.intellij.codeInsight.daemon.GutterIconNavigationHandler
 import com.intellij.openapi.command.WriteCommandAction
 import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.fileEditor.TextEditor
 import com.intellij.psi.javadoc.PsiDocComment
+import org.pshevche.javamarkdoc.ui.JavaMarkDocDialogEditor
 import java.awt.event.MouseEvent
 
 class JavaMarkDocLineMarkerHandler : GutterIconNavigationHandler<PsiDocComment> {

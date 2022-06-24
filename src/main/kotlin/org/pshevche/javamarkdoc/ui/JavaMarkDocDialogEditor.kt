@@ -1,4 +1,4 @@
-package com.github.pshevche.javamarkdoc
+package org.pshevche.javamarkdoc.ui
 
 import com.intellij.lang.Language
 import com.intellij.openapi.editor.EditorFactory

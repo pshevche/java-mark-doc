@@ -1,4 +1,4 @@
-package com.github.pshevche.javamarkdoc
+package org.pshevche.javamarkdoc.util
 
 import com.vladsch.flexmark.html.HtmlRenderer
 import com.vladsch.flexmark.html2md.converter.FlexmarkHtmlConverter
