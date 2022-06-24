@@ -1,7 +1,7 @@
-package org.jetbrains.plugins.template.services
+package com.github.pshevche.javamarkdoc.services
 
 import com.intellij.openapi.project.Project
-import org.jetbrains.plugins.template.MyBundle
+import com.github.pshevche.javamarkdoc.MyBundle
 
 class MyProjectService(project: Project) {
 

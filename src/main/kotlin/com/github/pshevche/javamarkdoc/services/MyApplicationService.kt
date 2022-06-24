@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.pshevche.javamarkdoc.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.pshevche.javamarkdoc.MyBundle
 
 class MyApplicationService {
 
